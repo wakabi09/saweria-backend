@@ -8,6 +8,11 @@ const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/151087486154572198
 
 let donationQueue = [];
 
+// [ HALAMAN UTAMA - AGAR TIDAK CANNOT GET ]
+app.get('/', (req, res) => {
+    res.send("Backend Saweria untuk Roblox AKTIF! 🚀 SERVER STATUS: ONLINE");
+});
+
 app.post('/webhook/saweria', async (req, res) => {
     const data = req.body;
     
