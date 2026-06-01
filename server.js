@@ -4,11 +4,11 @@ const app = express();
 
 app.use(bodyParser.json());
 
+// URL DISCORD KAMU SUDAH SAYA MASUKKAN DI SINI:
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1510874861545721987/uR19WRgGyeLygpRj66vEluXnLjUS3qhaMWsC0Q4WynkLI9BOOJj2IGwC0dkpayoNi4Cn";
 
 let donationQueue = [];
 
-// [ HALAMAN UTAMA - AGAR TIDAK CANNOT GET ]
 app.get('/', (req, res) => {
     res.send("Backend Saweria untuk Roblox AKTIF! 🚀 SERVER STATUS: ONLINE");
 });
@@ -46,7 +46,9 @@ app.post('/webhook/saweria', async (req, res) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(embedPayload)
             });
-        } catch (err) {}
+        } catch (err) {
+            console.error("Gagal mengirim ke Discord:", err);
+        }
     }
     res.status(200).send("OK");
 });
